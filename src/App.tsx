@@ -7,6 +7,7 @@ function App() {
       spec-url={'/result.json'}
       show-header={false}
       render-style="read"
+      primary-color="#4D2FA3"
     />
   );
 }
