@@ -1,0 +1,3479 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DimeDive APIs",
+    "version": "2.x.x"
+  },
+  "servers": [
+    {
+      "url": "https://dhanaprayoga.fiu.finfactor.in",
+      "description": "UAT server url - Dhanaprayoga"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/pfm/api/v2/user-subscriptions": {
+      "put": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Update user subscription",
+        "operationId": "putUserSubscriptions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/text": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Add user subscription",
+        "operationId": "postUserSubscriptions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/text": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/user-login": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get token",
+        "operationId": "postUserLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthorizationToken"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/user-details": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get user details - all FI types",
+        "operationId": "getUserDetails",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/user-account-delink": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Unlink user account",
+        "operationId": "postUserAccountDelink",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountDelinkRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/text": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/term-deposit/user-linked-accounts": {
+      "post": {
+        "tags": [
+          "term-deposit"
+        ],
+        "summary": "Get user linked accounts",
+        "operationId": "postUserLinkedAccounts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/term-deposit/user-details": {
+      "post": {
+        "tags": [
+          "term-deposit"
+        ],
+        "summary": "Get user details",
+        "operationId": "getUserDetails_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/term-deposit/user-account-statement": {
+      "post": {
+        "tags": [
+          "term-deposit"
+        ],
+        "summary": "Get user account statement transactions",
+        "operationId": "postUserAccountStatement",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TxnResponseTermDeposit"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/submit-consent-request-plus": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Submit consent request plus",
+        "operationId": "postSubmitConsentRequestPlus",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitConsentRequestPlusRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentResponsePlus"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/submit-consent-request": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Submit consent request",
+        "operationId": "postSubmitConsentRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitConsentRequestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsentDetail"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/recurring-deposit/user-linked-accounts": {
+      "post": {
+        "tags": [
+          "recurring-deposits"
+        ],
+        "summary": "Get user linked accounts",
+        "operationId": "postUserLinkedAccounts_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/recurring-deposit/user-details": {
+      "post": {
+        "tags": [
+          "recurring-deposits"
+        ],
+        "summary": "Get user details",
+        "operationId": "getUserDetails_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/recurring-deposit/user-account-statement": {
+      "post": {
+        "tags": [
+          "recurring-deposits"
+        ],
+        "summary": "Get user account statement transactions",
+        "operationId": "postUserAccountStatement_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TxnResponseRecurringDeposit"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutualfunds": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get list of all mutual funds",
+        "operationId": "postMutualFunds",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MutualFundConfigurationBean"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutual-fund/user-linked-accounts/holding-folio": {
+      "post": {
+        "tags": [
+          "mutual-funds"
+        ],
+        "summary": "Get user linked accounts - holding folio",
+        "operationId": "postUserLinkedAccountsFund",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankResponseMutualFund"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutual-fund/user-linked-accounts": {
+      "post": {
+        "tags": [
+          "mutual-funds"
+        ],
+        "summary": "Get user linked accounts",
+        "operationId": "postUserLinkedAccounts_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutual-fund/user-details": {
+      "post": {
+        "tags": [
+          "mutual-funds"
+        ],
+        "summary": "Get user details",
+        "operationId": "getUserDetails_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutual-fund/user-account-statement": {
+      "post": {
+        "tags": [
+          "mutual-funds"
+        ],
+        "summary": "Get user account statement transactions",
+        "operationId": "postUserAccountStatement_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MutualFundAccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TxnResponseMutualFund"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/mutual-fund/analysis": {
+      "post": {
+        "tags": [
+          "mutual-funds"
+        ],
+        "summary": "Get mutual funds analysis",
+        "operationId": "postMutualFundAnalysis",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeDistributionResponseMutualFund"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/firequest-user": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Submit FI request for a user",
+        "operationId": "postFiRequestUserRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FiRequestUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/text": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/firequest-account": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Submit FI request for an account",
+        "operationId": "postFiRequestAccountRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FiRequestAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/text": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/fips": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get List of all FIPs",
+        "operationId": "postFips",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FIPConfigurationBean"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-linked-accounts/holding-broker": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user linked accounts - holding wise brokers",
+        "operationId": "postUserLinkedAccountsHoldingBroker",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankResponseEquity"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-linked-accounts/demat-holding": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user linked accounts - demat wise holdings",
+        "operationId": "postUserLinkedAccountsDematHolding",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponseEquity"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-linked-accounts/broker-holding": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user linked accounts - broker wise holdings",
+        "operationId": "postUserLinkedAccountsBrokerHolding",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponseEquity"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-linked-accounts": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user linked accounts",
+        "operationId": "postUserLinkedAccounts_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-details": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user details",
+        "operationId": "getUserDetails_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/equities/user-account-statement": {
+      "post": {
+        "tags": [
+          "equities"
+        ],
+        "summary": "Get user account statement transactions",
+        "operationId": "postUserAccountStatement_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquityAccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TxnResponseEquity"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/deposit/user-linked-accounts": {
+      "post": {
+        "tags": [
+          "deposits"
+        ],
+        "summary": "Get user linked accounts",
+        "operationId": "postUserLinkedAccountsDeposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LinkedAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BanksResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/deposit/user-details": {
+      "post": {
+        "tags": [
+          "deposits"
+        ],
+        "summary": "Get user details",
+        "operationId": "getUserDetailsDeposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDetailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDetailsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/deposit/user-account-statement-download": {
+      "post": {
+        "tags": [
+          "deposits"
+        ],
+        "summary": "Download user account statement transactions",
+        "operationId": "postUserAccountStatementDownload",
+        "parameters": [
+          {
+            "name": "password",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/deposit/user-account-statement": {
+      "post": {
+        "tags": [
+          "deposits"
+        ],
+        "summary": "Get user account statement transactions",
+        "operationId": "postUserAccountStatementDeposit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountStatementRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/deposit/insights": {
+      "post": {
+        "tags": [
+          "deposits"
+        ],
+        "summary": "Get deposit related insights",
+        "operationId": "postDepositInsights",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepositInsightsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepositInsightsResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/brokers": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get list of brokers",
+        "operationId": "postBrokers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BrokerConfigurationBean"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    },
+    "/pfm/api/v2/account-consents-latest": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Get consent details for an account",
+        "operationId": "postAccountConsentsLatest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountConsentsLatestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountConsentsLatestResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "User not authorized"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SubscriptionRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "mobileNumber": {
+            "type": "string"
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ]
+          },
+          "subscriptionStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "subscriptionEnd": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "UserLogin": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "User id provisioned for FIU"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password provisioned for FIU"
+          }
+        }
+      },
+      "AuthorizationToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token to use in Authorization header in subsequent calls"
+          }
+        }
+      },
+      "UserDetailRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountResponse": {
+        "type": "object",
+        "properties": {
+          "fiDataId": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string"
+          },
+          "maskedAccNumber": {
+            "type": "string"
+          },
+          "accountRefNumber": {
+            "type": "string"
+          },
+          "dataFetched": {
+            "type": "boolean"
+          },
+          "accountName": {
+            "type": "string"
+          },
+          "lastFetchDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "fiData": {
+            "type": "object"
+          }
+        }
+      },
+      "BankResponse": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "linkedAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountResponse"
+            }
+          }
+        }
+      },
+      "BanksResponse": {
+        "type": "object",
+        "properties": {
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastFetchDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fipData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BankResponse"
+            }
+          }
+        }
+      },
+      "UserDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "subscriptionStatus": {
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ]
+          },
+          "subscriptionStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "subscriptionEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fiDatas": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/BanksResponse"
+            }
+          }
+        }
+      },
+      "AccountDelinkRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "accountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LinkedAccountRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountStatementRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "txnOrder": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "dateRangeFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateRangeTo": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TxnResponseTermDeposit": {
+        "type": "object",
+        "properties": {
+          "txnId": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "narration": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "OPENING",
+              "INTEREST",
+              "TDS",
+              "INSTALLMENT",
+              "CLOSING",
+              "OTHERS",
+              "UNKNOWN"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "CASH",
+              "ATM",
+              "CARD_PAYMENT",
+              "UPI",
+              "FT",
+              "OTHERS",
+              "UNKNOWN"
+            ]
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "transactionDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentsRequestConsentDetail": {
+        "type": "object",
+        "properties": {
+          "consentStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentExpiry": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentMode": {
+            "type": "string",
+            "enum": [
+              "VIEW",
+              "STORE",
+              "QUERY",
+              "STREAM"
+            ]
+          },
+          "fetchType": {
+            "type": "string",
+            "enum": [
+              "ONETIME",
+              "PERIODIC"
+            ]
+          },
+          "consentTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TRANSACTIONS",
+                "PROFILE",
+                "SUMMARY"
+              ]
+            }
+          },
+          "fiTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "DEPOSIT",
+                "TERM_DEPOSIT",
+                "RECURRING_DEPOSIT",
+                "SIP",
+                "CP",
+                "GOVT_SECURITIES",
+                "EQUITIES",
+                "BONDS",
+                "DEBENTURES",
+                "MUTUAL_FUNDS",
+                "ETF",
+                "IDR",
+                "CIS",
+                "AIF",
+                "INSURANCE_POLICIES",
+                "NPS",
+                "INVIT",
+                "REIT",
+                "GSTR1_3B",
+                "OTHER"
+              ]
+            }
+          },
+          "DataConsumer": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetailDataConsumer"
+          },
+          "Customer": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetailCustomer"
+          },
+          "Purpose": {
+            "$ref": "#/components/schemas/Purpose"
+          },
+          "FIDataRange": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetailFIDataRange"
+          },
+          "DataLife": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetailDataLife"
+          },
+          "Frequency": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetailFrequency"
+          },
+          "DataFilter": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentsRequestConsentDetailDataFilter"
+            }
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailCustomer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "Identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentsRequestConsentDetailCustomerIdentifiers"
+            }
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailCustomerIdentifiers": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "MOBILE",
+              "EMAIL",
+              "OTHERS"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailDataConsumer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FIU",
+              "USER",
+              "AA"
+            ]
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailDataFilter": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "TRANSACTIONTYPE",
+              "TRANSACTIONAMOUNT"
+            ]
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "=",
+              "!=",
+              ">",
+              "<",
+              ">=",
+              "<="
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailDataLife": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "enum": [
+              "MONTH",
+              "YEAR",
+              "DAY",
+              "INF"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailFIDataRange": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ConsentsRequestConsentDetailFrequency": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "enum": [
+              "MONTH",
+              "YEAR",
+              "DAY",
+              "HOUR"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "Purpose": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "refUri": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "Category": {
+            "$ref": "#/components/schemas/PurposeCategory"
+          }
+        }
+      },
+      "PurposeCategory": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "SubmitConsentRequestPlusRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "aaCustId": {
+            "type": "string"
+          },
+          "templateName": {
+            "type": "string"
+          },
+          "userSessionId": {
+            "type": "string"
+          },
+          "redirectUrl": {
+            "type": "string"
+          },
+          "fip": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "consentDetails": {
+            "$ref": "#/components/schemas/ConsentsRequestConsentDetail"
+          },
+          "pan": {
+            "type": "string"
+          },
+          "dob": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentResponsePlus": {
+        "type": "object",
+        "properties": {
+          "encryptedRequest": {
+            "type": "string"
+          },
+          "requestDate": {
+            "type": "string"
+          },
+          "encryptedFiuId": {
+            "type": "string"
+          },
+          "ConsentHandle": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "SubmitConsentRequestRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "aaCustId": {
+            "type": "string"
+          },
+          "templateName": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentDetail": {
+        "type": "object",
+        "properties": {
+          "custId": {
+            "type": "string"
+          },
+          "consentHandle": {
+            "type": "string"
+          },
+          "consentPurpose": {
+            "type": "string"
+          },
+          "consentDescription": {
+            "type": "string"
+          },
+          "requestDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentStatus": {
+            "type": "string",
+            "enum": [
+              "REQUESTED",
+              "DATA_REQUESTED",
+              "DATA_READY",
+              "READY",
+              "ACTIVE",
+              "PENDING",
+              "ACCEPTED",
+              "REJECTED",
+              "REVOKED",
+              "EXPIRED",
+              "FAILED",
+              "PAUSED",
+              "DENIED"
+            ]
+          },
+          "requestSessionId": {
+            "type": "string"
+          },
+          "requestConsentId": {
+            "type": "string"
+          },
+          "dateTimeRangeFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateTimeRangeTo": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "aaId": {
+            "type": "string"
+          },
+          "fetchType": {
+            "type": "string"
+          }
+        }
+      },
+      "TxnResponseRecurringDeposit": {
+        "type": "object",
+        "properties": {
+          "txnId": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "narration": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "OPENING",
+              "INTEREST",
+              "TDS",
+              "INSTALLMENT",
+              "CLOSING",
+              "OTHERS",
+              "UNKNOWN"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "CASH",
+              "ATM",
+              "CARD_PAYMENT",
+              "UPI",
+              "FT",
+              "OTHERS",
+              "UNKNOWN"
+            ]
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "transactionDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      },
+      "MutualFundConfigurationBean": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amc": {
+            "type": "string"
+          },
+          "schemeName": {
+            "type": "string"
+          },
+          "schemeStructure": {
+            "type": "string"
+          },
+          "schemeType": {
+            "type": "string"
+          },
+          "schemeCategory": {
+            "type": "string"
+          },
+          "shcemeNavName": {
+            "type": "string"
+          },
+          "launchDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closureDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          }
+        }
+      },
+      "BankResponseMutualFund": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "linkedAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountResponse"
+            }
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "costValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "holdings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HoldingResponse"
+            }
+          },
+          "totalFolios": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          },
+          "folios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Folio"
+            }
+          }
+        }
+      },
+      "Folio": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fiDataId": {
+            "type": "string"
+          },
+          "maskedAccNumber": {
+            "type": "string"
+          },
+          "accountRefNumber": {
+            "type": "string"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "folioNo": {
+            "type": "string"
+          },
+          "closingUnits": {
+            "type": "number",
+            "format": "double"
+          },
+          "lienUnits": {
+            "type": "number",
+            "format": "double"
+          },
+          "nav": {
+            "type": "number",
+            "format": "double"
+          },
+          "navDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lockingUnits": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastFetchTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          }
+        }
+      },
+      "HoldingResponse": {
+        "type": "object",
+        "properties": {
+          "issuerName": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "isinDescription": {
+            "type": "string"
+          },
+          "units": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "avgTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastFetchTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          },
+          "brokers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Broker"
+            }
+          }
+        }
+      },
+      "PrevDetails": {
+        "type": "object",
+        "properties": {
+          "percentageChange": {
+            "type": "number",
+            "format": "double"
+          },
+          "priceChange": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastFetchTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "holdingIsin": {
+            "type": "string"
+          },
+          "totalUnits": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "MutualFundAccountStatementRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "brokerId": {
+            "type": "string"
+          },
+          "folioNo": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "txnOrder": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "dateRangeFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateRangeTo": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TxnResponseMutualFund": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "txnId": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "amc": {
+            "type": "string"
+          },
+          "nav": {
+            "type": "number",
+            "format": "double"
+          },
+          "ucc": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "DEMAT",
+              "PHYSICAL"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "BUY",
+              "SELL",
+              "OTHERS"
+            ]
+          },
+          "units": {
+            "type": "number",
+            "format": "double"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "navDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "amfiCode": {
+            "type": "string"
+          },
+          "narration": {
+            "type": "string"
+          },
+          "registrar": {
+            "type": "string"
+          },
+          "schemeCode": {
+            "type": "string"
+          },
+          "schemePlan": {
+            "type": "string",
+            "enum": [
+              "DIRECT",
+              "REGULAR",
+              ""
+            ]
+          },
+          "lockInDays": {
+            "type": "string"
+          },
+          "lockInFlag": {
+            "type": "string"
+          },
+          "isinDescription": {
+            "type": "string"
+          },
+          "transactionDateTime": {
+            "type": "string"
+          }
+        }
+      },
+      "SchemeCategoryResponse": {
+        "type": "object",
+        "properties": {
+          "schemeCategory": {
+            "type": "string"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "SchemeDistributionResponseMutualFund": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "linkedAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountResponse"
+            }
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "costValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "holdings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HoldingResponse"
+            }
+          },
+          "schemeCategory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SchemeCategoryResponse"
+            }
+          },
+          "schemeType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SchemeTypeResponse"
+            }
+          }
+        }
+      },
+      "SchemeTypeResponse": {
+        "type": "object",
+        "properties": {
+          "schemeTypes": {
+            "type": "string"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "FiRequestUserRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          }
+        }
+      },
+      "FiRequestAccountRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          }
+        }
+      },
+      "FIPConfigurationBean": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "string"
+          },
+          "fiTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "entityIconUri": {
+            "type": "string"
+          },
+          "entityLogoUri": {
+            "type": "string"
+          },
+          "entityLogoWithNameUri": {
+            "type": "string"
+          },
+          "otpLength": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "BankResponseEquity": {
+        "type": "object",
+        "properties": {
+          "fipId": {
+            "type": "string"
+          },
+          "fipName": {
+            "type": "string"
+          },
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "linkedAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountResponse"
+            }
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalDemats": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalBrokers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brokers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Broker"
+            }
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          },
+          "holdings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HoldingResponse"
+            }
+          }
+        }
+      },
+      "Broker": {
+        "type": "object",
+        "properties": {
+          "brokerName": {
+            "type": "string"
+          },
+          "brokerId": {
+            "type": "string"
+          },
+          "units": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "avgTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastFetchTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          }
+        }
+      },
+      "BanksResponseEquity": {
+        "type": "object",
+        "properties": {
+          "totalFiData": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalFiDataToBeFetched": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastFetchDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fipData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BankResponse"
+            }
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalHoldings": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalDemats": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalBrokers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          },
+          "holdings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HoldingResponse"
+            }
+          },
+          "brokers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Broker"
+            }
+          },
+          "demat": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Demat"
+            }
+          }
+        }
+      },
+      "Demat": {
+        "type": "object",
+        "properties": {
+          "dematId": {
+            "type": "string"
+          },
+          "brokerName": {
+            "type": "string"
+          },
+          "fiDataId": {
+            "type": "string"
+          },
+          "fipId": {
+            "type": "string"
+          },
+          "maskedAccNumber": {
+            "type": "string"
+          },
+          "accountRefNumber": {
+            "type": "string"
+          },
+          "units": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "avgTradedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentValue": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastFetchTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "prevDetails": {
+            "$ref": "#/components/schemas/PrevDetails"
+          },
+          "holdings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HoldingResponse"
+            }
+          }
+        }
+      },
+      "EquityAccountStatementRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "brokerId": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "txnOrder": {
+            "type": "string",
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          },
+          "dateRangeFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateRangeTo": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TxnResponseEquity": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "brokerId": {
+            "type": "string"
+          },
+          "txnId": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "isinDescription": {
+            "type": "string"
+          },
+          "transactionDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "units": {
+            "type": "number",
+            "format": "double"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "companyName": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "BUY",
+              "SELL",
+              "BONUS",
+              "SPLIT",
+              "DIVIDEND",
+              "RIGHTS",
+              "OTHERS",
+              ""
+            ]
+          },
+          "narration": {
+            "type": "string"
+          },
+          "equityCategory": {
+            "type": "string",
+            "enum": [
+              "EQUITY",
+              "EQUITY_DERIVATIVES",
+              "CURRENCY_DERIVATIVES",
+              ""
+            ]
+          },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
+          "exchange": {
+            "type": "string",
+            "enum": [
+              "BSE",
+              "NSE",
+              "OTHERS",
+              ""
+            ]
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "CREDIT",
+              "DEBIT"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "CASH",
+              "ATM",
+              "CARD",
+              "UPI",
+              "FT",
+              "OTHERS",
+              "UNKNOWN"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "currentBalance": {
+            "type": "string"
+          },
+          "transactionTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "valueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "txnId": {
+            "type": "string"
+          },
+          "narration": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "txnMode": {
+            "type": "string"
+          }
+        }
+      },
+      "DepositInsightsRequest": {
+        "required": [
+          "from",
+          "uniqueIdentifier"
+        ],
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "frequency": {
+            "type": "string",
+            "enum": [
+              "DAILY",
+              "WEEKLY",
+              "MONTHLY",
+              "QUARTERLY",
+              "YEARLY"
+            ]
+          }
+        }
+      },
+      "DepositBalanceView": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "avg": {
+            "type": "number",
+            "description": "Average balance during period",
+            "format": "double"
+          },
+          "min": {
+            "type": "number",
+            "description": "Minimum balance during period",
+            "format": "double"
+          },
+          "max": {
+            "type": "number",
+            "description": "Maximum balance during period",
+            "format": "double"
+          },
+          "startOfPeriod": {
+            "type": "number",
+            "description": "Balance during start of the period",
+            "format": "double"
+          },
+          "endOfPeriod": {
+            "type": "number",
+            "description": "Balance during end of the period",
+            "format": "double"
+          },
+          "valueChange": {
+            "type": "number",
+            "description": "Value change over previous period for same frequency",
+            "format": "double"
+          },
+          "percentChange": {
+            "type": "number",
+            "description": "Percent change over previous period for same frequency",
+            "format": "double"
+          },
+          "isCompletePeriod": {
+            "type": "boolean",
+            "description": "Indicates whether data is available for the whole period"
+          }
+        }
+      },
+      "DepositInsightDetailsView": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of mode/category"
+          },
+          "value": {
+            "type": "number",
+            "description": "Sum of all transactions for given type",
+            "format": "double"
+          },
+          "txnCount": {
+            "type": "integer",
+            "description": "Number of transactions for given type",
+            "format": "int64"
+          },
+          "valueChange": {
+            "type": "number",
+            "description": "Value change over previous period for same frequency",
+            "format": "double"
+          },
+          "percentChange": {
+            "type": "number",
+            "description": "Percent change over previous period for same frequency",
+            "format": "double"
+          }
+        },
+        "description": "Category split for all transactions during period"
+      },
+      "DepositInsightView": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "total": {
+            "type": "number",
+            "description": "Sum of all transactions during period",
+            "format": "double"
+          },
+          "modeSplit": {
+            "type": "array",
+            "description": "Mode split for all transactions during period. Modes could include NEFT, CHEQUE, UPI etc.",
+            "items": {
+              "$ref": "#/components/schemas/DepositInsightDetailsView"
+            }
+          },
+          "categorySplit": {
+            "type": "array",
+            "description": "Category split for all transactions during period",
+            "items": {
+              "$ref": "#/components/schemas/DepositInsightDetailsView"
+            }
+          }
+        }
+      },
+      "DepositInsightsResponse": {
+        "type": "object",
+        "properties": {
+          "depositInsights": {
+            "$ref": "#/components/schemas/DepositInsightsView"
+          }
+        }
+      },
+      "DepositInsightsView": {
+        "type": "object",
+        "properties": {
+          "accountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "balance": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositBalanceView"
+            }
+          },
+          "outgoing": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositInsightView"
+            }
+          },
+          "incoming": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositInsightView"
+            }
+          }
+        }
+      },
+      "BrokerConfigurationBean": {
+        "type": "object",
+        "properties": {
+          "brokerName": {
+            "type": "string"
+          },
+          "brokerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "logo": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountConsentsLatestRequest": {
+        "type": "object",
+        "properties": {
+          "uniqueIdentifier": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountConsentsLatestResponse": {
+        "type": "object",
+        "properties": {
+          "consentId": {
+            "type": "string"
+          },
+          "consentCreateTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentExpiry": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "consentMode": {
+            "type": "string",
+            "enum": [
+              "VIEW",
+              "STORE",
+              "QUERY",
+              "STREAM"
+            ]
+          },
+          "fetchType": {
+            "type": "string",
+            "enum": [
+              "ONETIME",
+              "PERIODIC"
+            ]
+          },
+          "consentTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TRANSACTIONS",
+                "PROFILE",
+                "SUMMARY"
+              ]
+            }
+          },
+          "fiTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "DataConsumer": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailDataConsumer"
+          },
+          "DataProvider": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailDataProvider"
+          },
+          "Customer": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailCustomer"
+          },
+          "Accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentArtefactConsentDetailAccounts"
+            }
+          },
+          "Purpose": {
+            "$ref": "#/components/schemas/Purpose"
+          },
+          "FIDataRange": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailFIDataRange"
+          },
+          "DataLife": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailDataLife"
+          },
+          "Frequency": {
+            "$ref": "#/components/schemas/ConsentArtefactConsentDetailFrequency"
+          },
+          "DataFilter": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConsentsRequestConsentDetailDataFilter"
+            }
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailAccounts": {
+        "type": "object",
+        "properties": {
+          "fiType": {
+            "type": "string"
+          },
+          "fipId": {
+            "type": "string"
+          },
+          "accType": {
+            "type": "string"
+          },
+          "linkRefNumber": {
+            "type": "string"
+          },
+          "maskedAccNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailCustomer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailDataConsumer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FIU",
+              "USER",
+              "AA"
+            ]
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailDataLife": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "enum": [
+              "DAY",
+              "MONTH",
+              "YEAR",
+              "INF"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailDataProvider": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FIP",
+              "AA"
+            ]
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailFIDataRange": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ConsentArtefactConsentDetailFrequency": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "enum": [
+              "HOUR",
+              "DAY",
+              "MONTH",
+              "YEAR"
+            ]
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
