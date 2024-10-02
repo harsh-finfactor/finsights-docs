@@ -1,5 +1,5 @@
 export interface IPage {
-    title?: string;
+    title: string;
     href: string;
     children?: IPage[];
 }
@@ -10,12 +10,12 @@ export const allPages: IPage[] = [
         href: "/"
     },
     {
-        title: "Coda",
-        href: "/coda",
+        title: "WealthTrack",
+        href: "/wealth-track",
         children: [
             {
-                title: "Dime Dive",
-                href: "/coda/dime-dive"
+                title: "DimeDive",
+                href: "/wealth-track/dime-dive"
             }
         ]
     },

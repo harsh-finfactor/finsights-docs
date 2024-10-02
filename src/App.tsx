@@ -13,7 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomeLayout />}>
             <Route path="" element={<HomePage />} />
-            <Route path="/coda">
+            <Route path="/wealth-track">
               <Route path="" element={<CodaPage />} />
               <Route path="dime-dive" element={<DimeDivePage />} />
             </Route>

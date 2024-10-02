@@ -24,8 +24,8 @@ interface RapiDocProps
   'header-color'?: string;
   'primary-color'?: string;
   'load-fonts'?: boolean;
-  'regular-fonts'?: string;
-  'mono-fonts'?: string;
+  'regular-font'?: string;
+  'mono-font'?: string;
   'font-size'?: 'default' | 'large' | 'largest';
   // Navigation
   'use-path-in-nav-bar'?: boolean;
@@ -127,7 +127,6 @@ export const RapiDocReact = React.forwardRef<HTMLDivElement, RapiDocProps>(
         apiServerChange && apiServerChange(server);
       };
 
-      console.log(`rapiDocRef`, rapiDocRef);
       if (rapiDocRef) {
         beforeRender &&
           rapiDocRef.addEventListener('before-render', handleBeforeRender);
@@ -169,7 +168,13 @@ export const RapiDocReact = React.forwardRef<HTMLDivElement, RapiDocProps>(
     ]);
 
     return (
-      <rapi-doc {...props} ref={ref || localRef}>
+      <rapi-doc
+        {...props}
+        ref={ref || localRef}
+        style={{
+          padding: 0
+        }}
+      >
         {children}
       </rapi-doc>
     );
