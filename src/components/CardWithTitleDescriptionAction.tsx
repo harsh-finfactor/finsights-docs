@@ -1,4 +1,4 @@
-import { Button, Card, CardActionArea, CardActions, CardContent, Typography } from "@mui/material";
+import { Card, CardActionArea, CardActions, CardContent, Typography } from "@mui/material";
 import Title from "./Title";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -20,10 +20,13 @@ export default function CardWithTitleDescriptionAction(props: ICardWithTitleDesc
                         {description}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button size="small" sx={{ color: "#4D2FA3" }} endIcon={<ChevronRightIcon />}>{actionText}</Button>
+                <CardActions sx={{ paddingLeft: 2 }}>
+                    <Typography color="#4D2FA3">{actionText}</Typography>
+                    <span>
+                        <ChevronRightIcon sx={{ color: "#4D2FA3" }} />
+                    </span>
                 </CardActions>
             </CardActionArea>
-        </Card>
+        </Card >
     );
 }

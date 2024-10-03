@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "DimeDive APIs",
+    "title": "WealthScape APIs",
     "version": "2.x.x"
   },
   "servers": [
@@ -15,11 +15,40 @@
       "bearerAuth": []
     }
   ],
+  "tags": [
+    {
+      "name": "Login"
+    },
+    {
+      "name": "Subscription"
+    },
+    {
+      "name": "AA Connect"
+    },
+    {
+      "name": "Deposit Insights"
+    },
+    {
+      "name": "Mutual Fund Insights"
+    },
+    {
+      "name": "Equity Insights"
+    },
+    {
+      "name": "Recurring Deposit Insights"
+    },
+    {
+      "name": "Term Deposit Insights"
+    },
+    {
+      "name": "Others"
+    }
+  ],
   "paths": {
     "/pfm/api/v2/user-subscriptions": {
       "put": {
         "tags": [
-          "default"
+          "Subscription"
         ],
         "summary": "Update user subscription",
         "operationId": "putUserSubscriptions",
@@ -60,7 +89,7 @@
       },
       "post": {
         "tags": [
-          "default"
+          "Subscription"
         ],
         "summary": "Add user subscription",
         "operationId": "postUserSubscriptions",
@@ -103,7 +132,7 @@
     "/pfm/api/v2/user-login": {
       "post": {
         "tags": [
-          "default"
+          "Login"
         ],
         "summary": "Get token",
         "operationId": "postUserLogin",
@@ -146,7 +175,7 @@
     "/pfm/api/v2/user-details": {
       "post": {
         "tags": [
-          "default"
+          "Others"
         ],
         "summary": "Get user details - all FI types",
         "operationId": "getUserDetails",
@@ -189,7 +218,7 @@
     "/pfm/api/v2/user-account-delink": {
       "post": {
         "tags": [
-          "default"
+          "Subscription"
         ],
         "summary": "Unlink user account",
         "operationId": "postUserAccountDelink",
@@ -232,7 +261,7 @@
     "/pfm/api/v2/term-deposit/user-linked-accounts": {
       "post": {
         "tags": [
-          "term-deposit"
+          "Term Deposit Insights"
         ],
         "summary": "Get user linked accounts",
         "operationId": "postUserLinkedAccounts",
@@ -275,7 +304,7 @@
     "/pfm/api/v2/term-deposit/user-details": {
       "post": {
         "tags": [
-          "term-deposit"
+          "Term Deposit Insights"
         ],
         "summary": "Get user details",
         "operationId": "getUserDetails_1",
@@ -318,7 +347,7 @@
     "/pfm/api/v2/term-deposit/user-account-statement": {
       "post": {
         "tags": [
-          "term-deposit"
+          "Term Deposit Insights"
         ],
         "summary": "Get user account statement transactions",
         "operationId": "postUserAccountStatement",
@@ -364,7 +393,7 @@
     "/pfm/api/v2/submit-consent-request-plus": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Submit consent request plus",
         "operationId": "postSubmitConsentRequestPlus",
@@ -407,7 +436,7 @@
     "/pfm/api/v2/submit-consent-request": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Submit consent request",
         "operationId": "postSubmitConsentRequest",
@@ -450,7 +479,7 @@
     "/pfm/api/v2/recurring-deposit/user-linked-accounts": {
       "post": {
         "tags": [
-          "recurring-deposits"
+          "Recurring Deposit Insights"
         ],
         "summary": "Get user linked accounts",
         "operationId": "postUserLinkedAccounts_1",
@@ -493,7 +522,7 @@
     "/pfm/api/v2/recurring-deposit/user-details": {
       "post": {
         "tags": [
-          "recurring-deposits"
+          "Recurring Deposit Insights"
         ],
         "summary": "Get user details",
         "operationId": "getUserDetails_2",
@@ -536,7 +565,7 @@
     "/pfm/api/v2/recurring-deposit/user-account-statement": {
       "post": {
         "tags": [
-          "recurring-deposits"
+          "Recurring Deposit Insights"
         ],
         "summary": "Get user account statement transactions",
         "operationId": "postUserAccountStatement_1",
@@ -582,7 +611,7 @@
     "/pfm/api/v2/mutualfunds": {
       "post": {
         "tags": [
-          "default"
+          "Others"
         ],
         "summary": "Get list of all mutual funds",
         "operationId": "postMutualFunds",
@@ -618,7 +647,7 @@
     "/pfm/api/v2/mutual-fund/user-linked-accounts/holding-folio": {
       "post": {
         "tags": [
-          "mutual-funds"
+          "Mutual Fund Insights"
         ],
         "summary": "Get user linked accounts - holding folio",
         "operationId": "postUserLinkedAccountsFund",
@@ -661,7 +690,7 @@
     "/pfm/api/v2/mutual-fund/user-linked-accounts": {
       "post": {
         "tags": [
-          "mutual-funds"
+          "Mutual Fund Insights"
         ],
         "summary": "Get user linked accounts",
         "operationId": "postUserLinkedAccounts_2",
@@ -704,7 +733,7 @@
     "/pfm/api/v2/mutual-fund/user-details": {
       "post": {
         "tags": [
-          "mutual-funds"
+          "Mutual Fund Insights"
         ],
         "summary": "Get user details",
         "operationId": "getUserDetails_3",
@@ -747,7 +776,7 @@
     "/pfm/api/v2/mutual-fund/user-account-statement": {
       "post": {
         "tags": [
-          "mutual-funds"
+          "Mutual Fund Insights"
         ],
         "summary": "Get user account statement transactions",
         "operationId": "postUserAccountStatement_2",
@@ -793,7 +822,7 @@
     "/pfm/api/v2/mutual-fund/analysis": {
       "post": {
         "tags": [
-          "mutual-funds"
+          "Mutual Fund Insights"
         ],
         "summary": "Get mutual funds analysis",
         "operationId": "postMutualFundAnalysis",
@@ -836,7 +865,7 @@
     "/pfm/api/v2/firequest-user": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Submit FI request for a user",
         "operationId": "postFiRequestUserRequest",
@@ -879,7 +908,7 @@
     "/pfm/api/v2/firequest-account": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Submit FI request for an account",
         "operationId": "postFiRequestAccountRequest",
@@ -922,7 +951,7 @@
     "/pfm/api/v2/fips": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Get List of all FIPs",
         "operationId": "postFips",
@@ -958,7 +987,7 @@
     "/pfm/api/v2/equities/user-linked-accounts/holding-broker": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user linked accounts - holding wise brokers",
         "operationId": "postUserLinkedAccountsHoldingBroker",
@@ -1001,7 +1030,7 @@
     "/pfm/api/v2/equities/user-linked-accounts/demat-holding": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user linked accounts - demat wise holdings",
         "operationId": "postUserLinkedAccountsDematHolding",
@@ -1044,7 +1073,7 @@
     "/pfm/api/v2/equities/user-linked-accounts/broker-holding": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user linked accounts - broker wise holdings",
         "operationId": "postUserLinkedAccountsBrokerHolding",
@@ -1087,7 +1116,7 @@
     "/pfm/api/v2/equities/user-linked-accounts": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user linked accounts",
         "operationId": "postUserLinkedAccounts_3",
@@ -1130,7 +1159,7 @@
     "/pfm/api/v2/equities/user-details": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user details",
         "operationId": "getUserDetails_4",
@@ -1173,7 +1202,7 @@
     "/pfm/api/v2/equities/user-account-statement": {
       "post": {
         "tags": [
-          "equities"
+          "Equity Insights"
         ],
         "summary": "Get user account statement transactions",
         "operationId": "postUserAccountStatement_3",
@@ -1219,7 +1248,7 @@
     "/pfm/api/v2/deposit/user-linked-accounts": {
       "post": {
         "tags": [
-          "deposits"
+          "Deposit Insights"
         ],
         "summary": "Get user linked accounts",
         "operationId": "postUserLinkedAccountsDeposit",
@@ -1262,7 +1291,7 @@
     "/pfm/api/v2/deposit/user-details": {
       "post": {
         "tags": [
-          "deposits"
+          "Deposit Insights"
         ],
         "summary": "Get user details",
         "operationId": "getUserDetailsDeposit",
@@ -1305,7 +1334,7 @@
     "/pfm/api/v2/deposit/user-account-statement-download": {
       "post": {
         "tags": [
-          "deposits"
+          "Deposit Insights"
         ],
         "summary": "Download user account statement transactions",
         "operationId": "postUserAccountStatementDownload",
@@ -1359,7 +1388,7 @@
     "/pfm/api/v2/deposit/user-account-statement": {
       "post": {
         "tags": [
-          "deposits"
+          "Deposit Insights"
         ],
         "summary": "Get user account statement transactions",
         "operationId": "postUserAccountStatementDeposit",
@@ -1405,7 +1434,7 @@
     "/pfm/api/v2/deposit/insights": {
       "post": {
         "tags": [
-          "deposits"
+          "Deposit Insights"
         ],
         "summary": "Get deposit related insights",
         "operationId": "postDepositInsights",
@@ -1448,7 +1477,7 @@
     "/pfm/api/v2/brokers": {
       "post": {
         "tags": [
-          "default"
+          "Others"
         ],
         "summary": "Get list of brokers",
         "operationId": "postBrokers",
@@ -1484,7 +1513,7 @@
     "/pfm/api/v2/account-consents-latest": {
       "post": {
         "tags": [
-          "default"
+          "AA Connect"
         ],
         "summary": "Get consent details for an account",
         "operationId": "postAccountConsentsLatest",
@@ -3143,7 +3172,7 @@
             "description": "Percent change over previous period for same frequency",
             "format": "double"
           },
-          "isCompletePeriod": {
+          "hasFullPeriodData": {
             "type": "boolean",
             "description": "Indicates whether data is available for the whole period"
           }
