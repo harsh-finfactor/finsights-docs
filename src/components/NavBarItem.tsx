@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Collapse, Divider, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Collapse, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
 import { IPage } from '../models/Page';
-import { useNavigate } from 'react-router-dom';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 interface IProps {
-    page: IPage;
-    selectedIndex: number;
-    currentIndex: number;
+    selectedPageIndex: number;
+    currentPageIndex: number;
     setSelectedIndex: (_: number) => void;
+    page: IPage;
 }
 
 interface IMenuItemRootProps {
@@ -28,8 +28,10 @@ interface IMenuItemChildProps {
 
 interface IMenuItemProps {
     item: IPage;
-    selectedIndex: number;
-    currentIndex: number;
+    bold: boolean;
+    isChild: boolean;
+    isSelected: boolean;
+    currentPageIndex: number;
     handleClick: (_: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => void;
     enableExpandable: boolean;
     isExpandable?: boolean;
@@ -39,8 +41,10 @@ interface IMenuItemProps {
 function MenuItem(props: IMenuItemProps) {
     const {
         item,
-        selectedIndex,
-        currentIndex,
+        bold,
+        isChild,
+        isSelected,
+        currentPageIndex,
         handleClick,
         enableExpandable,
         isExpandable = false,
@@ -48,46 +52,43 @@ function MenuItem(props: IMenuItemProps) {
     } = props;
     const navigate = useNavigate();
     return (
-        <ListItem
-            key={item.title}
-            disablePadding
-        >
-            <ListItemButton
-                selected={selectedIndex === currentIndex}
-                onClick={(event) => {
-                    navigate(item.href);
-                    handleClick(event, currentIndex);
-                }}
-                sx={{
-                    "&.Mui-selected": {
-                        backgroundColor: "#4D2FA333",
-                        ":hover": {
-                            backgroundColor: "#4D2FA333"
-                        }
+        <ListItemButton
+            selected={isSelected}
+            onClick={(event) => {
+                navigate(item.href);
+                handleClick(event, currentPageIndex);
+            }}
+            sx={{
+                "&.Mui-selected": {
+                    backgroundColor: "#4D2FA333",
+                    ":hover": {
+                        backgroundColor: "#4D2FA333"
                     }
-                }}
-            >
-                <ListItemText>
-                    <Typography fontWeight="bold">
-                        {item.title}
-                    </Typography>
-                </ListItemText>
-                {enableExpandable && (
-                    <>
-                        {isExpandable && !open && <ExpandMoreIcon />}
-                        {isExpandable && open && <ExpandLessIcon />}
-                    </>
-                )}
-            </ListItemButton>
-        </ListItem>
+                }
+            }}
+        >
+            <ListItemText sx={{
+                marginLeft: isChild ? 3 : 0
+            }}>
+                <Typography fontWeight={bold ? "bold" : undefined}>
+                    {item.title}
+                </Typography>
+            </ListItemText>
+            {enableExpandable && (
+                <>
+                    {isExpandable && !open && <ChevronRightIcon />}
+                    {isExpandable && open && <ExpandMoreIcon />}
+                </>
+            )}
+        </ListItemButton>
     );
 }
 
 function MenuItemRoot(props: IProps & IMenuItemRootProps) {
     const {
         page,
-        selectedIndex,
-        currentIndex,
+        selectedPageIndex,
+        currentPageIndex,
         setSelectedIndex,
         setOpen,
         open,
@@ -98,13 +99,17 @@ function MenuItemRoot(props: IProps & IMenuItemRootProps) {
 
     const handleListItemClick = (_: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
         setSelectedIndex(index);
+        setSelectedChildIndex(-1);
     };
 
     useEffect(() => {
-        if (isChildSelected) {
-            setSelectedIndex(-1);
+        if (selectedPageIndex !== currentPageIndex) {
+            setSelectedChildIndex(-1);
+            setOpen(false);
         }
-    }, [isChildSelected, setSelectedIndex]);
+    }, [selectedPageIndex, currentPageIndex, setSelectedChildIndex, setOpen]);
+
+    const isCurrentPageSelected = (selectedPageIndex === currentPageIndex);
 
     return (
         <ListItem
@@ -117,8 +122,10 @@ function MenuItemRoot(props: IProps & IMenuItemRootProps) {
         >
             <MenuItem
                 item={page}
-                selectedIndex={isChildSelected ? -1 : selectedIndex}
-                currentIndex={currentIndex}
+                bold={isCurrentPageSelected}
+                isChild={false}
+                isSelected={isChildSelected ? false : isCurrentPageSelected}
+                currentPageIndex={currentPageIndex}
                 handleClick={handleListItemClick}
                 enableExpandable={true}
                 isExpandable={isExpandable}
@@ -129,34 +136,62 @@ function MenuItemRoot(props: IProps & IMenuItemRootProps) {
 }
 
 function MenuItemChildren(props: IProps & IMenuItemChildProps) {
-    const { open, page, selectedChildIndex, setSelectedChildIndex } = props;
+    const {
+        open,
+        page,
+        selectedChildIndex,
+        setSelectedChildIndex
+    } = props;
     const handleListItemClick = (_: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
         setSelectedChildIndex(index);
     };
     return (
         <Collapse in={open} unmountOnExit>
-            <Divider />
-            <ListItem disablePadding key={page.title}>
-                {page.children?.map((item, index) => (
-                    <MenuItem
-                        item={item}
-                        selectedIndex={selectedChildIndex}
-                        currentIndex={index}
-                        handleClick={handleListItemClick}
-                        enableExpandable={false}
-                    />
+            <List disablePadding>
+                {page.children?.map((childPage, index) => (
+                    <ListItem disablePadding key={childPage.title}>
+                        <MenuItem
+                            bold={selectedChildIndex === index}
+                            isChild={true}
+                            item={childPage}
+                            isSelected={selectedChildIndex === index}
+                            currentPageIndex={index}
+                            handleClick={handleListItemClick}
+                            enableExpandable={false}
+                        />
+                    </ListItem>
                 ))}
-            </ListItem>
+            </List>
         </Collapse>
     );
 }
 
-export default function NavBarItem(props: IProps) {
-    const { page } = props;
+function getDefaultChildSelectedIndex(page: IPage, isCurrentPageSelected: boolean, currentPath: string) {
+    let defaultChildSelectedIndex = -1;
+    if (isCurrentPageSelected) {
+        if (page.href !== currentPath && page.children) {
+            page.children.forEach((childPage, index) => {
+                if (childPage.href === currentPath) {
+                    defaultChildSelectedIndex = index;
+                }
+            });
+        }
+    }
+    return defaultChildSelectedIndex;
+}
 
-    const [open, setOpen] = useState(false);
+export default function NavBarItem(props: IProps) {
+    const { page, selectedPageIndex, currentPageIndex } = props;
+
+    let location = useLocation();
+
+    const isCurrentPageSelected = selectedPageIndex === currentPageIndex;
+    const [open, setOpen] = useState(isCurrentPageSelected);
+
+    let defaultChildSelectedIndex = getDefaultChildSelectedIndex(page, isCurrentPageSelected, location.pathname);
+    const [selectedChildIndex, setSelectedChildIndex] = useState(defaultChildSelectedIndex);
+
     const isExpandable = (page.children && page.children?.length > 0) || false;
-    const [selectedChildIndex, setSelectedChildIndex] = useState(-1);
 
     return (
         <>

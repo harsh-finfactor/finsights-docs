@@ -1,41 +1,26 @@
-import * as React from 'react';
+import { ReactElement, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import { allPages } from '../models/Page';
-import { Box, Container, CssBaseline, Drawer, IconButton, List, Toolbar, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Container, CssBaseline, Drawer, IconButton, List, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { matchPath, Outlet, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import { Outlet, useLocation } from 'react-router-dom';
+import { ReactComponent as LogoComponent } from '../assets/logo.svg';
 import { useEffect } from 'react';
 import NavBarItem from './NavBarItem';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeHeader from './HomeHeader';
+import { breadcrumbsForPage, getSelectedPageIndex } from '../utils/PageUtils';
 
-const drawerWidth = 250;
-
-function getSelectedPageIndex(currentPath: string) {
-    let index = 0;
-    allPages.forEach((page) => {
-        const doesMatch = matchPath(page.href, currentPath);
-        if (doesMatch) {
-            index = allPages.indexOf(page);
-        } else if (page.children) {
-            page.children.forEach((childPage) => {
-                const doesMatch = matchPath(childPage.href, currentPath);
-                if (doesMatch) {
-                    index = allPages.indexOf(page);
-                }
-            });
-        }
-    });
-
-    return index;
-}
+const drawerWidth = 270;
 
 export default function HomeLayout() {
 
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     let location = useLocation();
 
-    const [selectedIndex, setSelectedIndex] = React.useState(getSelectedPageIndex(location.pathname));
+    const [selectedIndex, setSelectedIndex] = useState(getSelectedPageIndex(location.pathname));
+    const [breadcrumbs, setBreadcrumbs] = useState<ReactElement[]>([]);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -45,19 +30,24 @@ export default function HomeLayout() {
         setSelectedIndex(getSelectedPageIndex(location.pathname));
     }, [location]);
 
+    useEffect(() => {
+        setBreadcrumbs(breadcrumbsForPage(selectedIndex, location.pathname));
+    }, [selectedIndex, setBreadcrumbs, location.pathname]);
+
     const drawer = (
         <Container disableGutters component="div" sx={{
             backgroundColor: "#F6F5FA"
         }}>
             <Toolbar>
-                <img src={logo} alt='logo' style={{ width: '100%' }} />
+                <LogoComponent style={{ width: '100%' }} />
             </Toolbar>
-            <List>
+            <List disablePadding>
                 {allPages.map((page, index) =>
                     <NavBarItem
+                        key={page.title}
                         page={page}
-                        selectedIndex={selectedIndex}
-                        currentIndex={index}
+                        selectedPageIndex={selectedIndex}
+                        currentPageIndex={index}
                         setSelectedIndex={setSelectedIndex}
                     />
                 )}
@@ -130,15 +120,20 @@ export default function HomeLayout() {
                 component="main"
                 sx={{
                     flexGrow: 1,
-                    p: 3,
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    backgroundColor: '#F5F5F5',
                     minHeight: '100vh',
-                    padding: 0
+                    padding: 0,
+                    backgroundColor: "#FAFBFC"
                 }}
             >
+                <HomeHeader />
                 <Toolbar sx={{ display: { sm: 'none' } }} />
-                <Outlet />
+                <Box sx={{ padding: 4 }}>
+                    <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
+                        {breadcrumbs}
+                    </Breadcrumbs>
+                    <Outlet />
+                </Box>
             </Box>
         </Box>
     );
