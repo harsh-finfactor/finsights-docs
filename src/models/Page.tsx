@@ -10,30 +10,44 @@ export const allPages: IPage[] = [
         href: "/"
     },
     {
-        title: "WealthTrack",
-        href: "/wealth-track",
+        title: "WealthScape",
+        href: "/wealth-scape",
         children: [
             {
-                title: "DimeDive",
-                href: "/wealth-track/dime-dive"
-            }
-        ]
-    },
-    {
-        title: "Lending",
-        href: "/lending"
-    },
-    {
-        title: "AA Connect",
-        href: "/aa-connect",
-        children: [
-            {
-                title: "Finsense",
-                href: "/aa-connect/finsense"
+                title: "Authentication",
+                href: "/wealth-scape#auth"
             },
             {
-                title: "ConnectHub",
-                href: "/aa-connect/connect-hub"
+                title: "Subscription",
+                href: "/wealth-scape#subscription"
+            },
+            {
+                title: "AA Connect",
+                href: "/wealth-scape#aa-connect"
+            },
+            {
+                title: "Deposit Insights",
+                href: "/wealth-scape#deposit-insights"
+            },
+            {
+                title: "Mutual Fund Insights",
+                href: "/wealth-scape#mutual-fund-insights"
+            },
+            {
+                title: "Equity Insights",
+                href: "/wealth-scape#equity-insights"
+            },
+            {
+                title: "Recurring Deposit Insights",
+                href: "/wealth-scape#recurring-deposit-insights"
+            },
+            {
+                title: "Term Deposit Insights",
+                href: "/wealth-scape#term-deposit-insights"
+            },
+            {
+                title: "Others",
+                href: "/wealth-scape#others"
             }
         ]
     }

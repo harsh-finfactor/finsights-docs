@@ -4,7 +4,7 @@ import { allPages } from '../models/Page';
 import { Box, Breadcrumbs, Container, CssBaseline, Drawer, IconButton, List, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Outlet, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import { ReactComponent as LogoComponent } from '../assets/logo.svg';
 import { useEffect } from 'react';
 import NavBarItem from './NavBarItem';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -39,7 +39,7 @@ export default function HomeLayout() {
             backgroundColor: "#F6F5FA"
         }}>
             <Toolbar>
-                <img src={logo} alt='logo' style={{ width: '100%' }} />
+                <LogoComponent style={{ width: '100%' }} />
             </Toolbar>
             <List disablePadding>
                 {allPages.map((page, index) =>

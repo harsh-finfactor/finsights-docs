@@ -1,18 +1,19 @@
 import { Box, Typography } from "@mui/material";
 import Title from "./Title";
 import { ITitleDescriptionProps } from "./TitleDescription";
+import { FunctionComponent, SVGProps } from "react";
 
 interface ITitleDescriptionImage extends ITitleDescriptionProps {
-    image: string;
-    imagePosition: "top" | "right"
-    maxWidth: number
+    svg: FunctionComponent<SVGProps<SVGSVGElement>>;
+    imagePosition: "top" | "right";
+    maxWidth: number;
 }
 
 export default function TitleDescriptionImage(props: ITitleDescriptionImage) {
-    const { title, description, image, maxWidth } = props;
+    const { title, description, svg: Svg, maxWidth } = props;
     return (
         <Box maxWidth={maxWidth}>
-            <img src={image} alt={title} />
+            <Svg />
             <Title title={title} paddingTop={1} />
             <Typography
                 fontSize={14}
