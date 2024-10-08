@@ -112,7 +112,6 @@ const WealthScapePage: React.FC = React.memo(() => {
             </>
         </Box>
         <RapiDocReact
-            id="test"
             spec-url={"https://dhanaprayoga.fiu.finfactor.in/pfm/v2/api-docs"}
             show-info={false}
             show-header={false}

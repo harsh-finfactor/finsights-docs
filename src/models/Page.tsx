@@ -26,6 +26,10 @@ export const allPages: IPage[] = [
                 href: "/wealth-scape#aa-connect"
             },
             {
+                title: "MFC Connect",
+                href: "/wealth-scape#mfc-connect"
+            },
+            {
                 title: "Deposit Insights",
                 href: "/wealth-scape#deposit-insights"
             },
